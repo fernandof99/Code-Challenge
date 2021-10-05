@@ -50,3 +50,23 @@ exports.update = (req,res) => {
         })
     })
 }
+
+exports.delete = (req,res) => {
+    const id = req.params.id
+
+    Post.findByIdAndRemove(id)
+    .then((result) => {
+        if (!result){
+            res.status(404).send({
+                message: "Post not found"
+            })
+        }
+        res.send({
+            message: "Post was deleted"
+        })
+    }).catch((err) => {
+        res.status(409).send({
+            message: err.message || "Some error while delete posts."
+        })
+    })
+}
