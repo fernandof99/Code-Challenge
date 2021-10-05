@@ -30,3 +30,23 @@ exports.create = (req, res) => {
         })
     })
 }
+
+exports.update = (req,res) => {
+    const id = req.params.id
+
+    Post.findByIdAndUpdate(id, req.body)
+    .then ((result) => {
+        if (!result){
+            res.status(404).send({
+                message: "Post not found"
+            })
+        }
+        res.send({
+            message: "Post was updated"
+        })
+    }).catch((err) => {
+        res.status(409).send({
+            message: err.message || "Some error while update posts."
+        })
+    })
+}
