@@ -94,3 +94,15 @@ exports.findOne = (req, res) => {
         })
     })
 }
+
+exports.insertBulk = (req, res) => {
+    let users = req.body
+    Post.collection.insertMany(users,function(err,docs){
+        if (err){
+            return console.error(err)
+        }
+        else{
+            console.log("Insert Many Data!", docs)
+        }
+    })
+}
