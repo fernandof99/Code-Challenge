@@ -6,5 +6,6 @@ module.exports = (app) => {
     router.put('/:id', posts.update)
     router.delete('/:id', posts.delete)
     router.get('/', posts.findAll)
+    router.get('/:id', posts.findOne)
     app.use('/api/posts', router)
 }
