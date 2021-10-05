@@ -10,5 +10,6 @@ module.exports = (app) => {
     router.post('/insertbulk', posts.insertBulk)
     router.put('/', posts.updateBulk)
     router.delete('/', posts.deleteBulk)
+    router.put('/softdelete', posts.deleteSoft)
     app.use('/api/posts', router)
 }
