@@ -125,3 +125,23 @@ exports.updateBulk = (req,res) => {
         })
     })
 }
+
+exports.deleteBulk = (req,res) => {
+    const filter = req.body
+
+    Post.deleteMany(filter)
+    .then((result) => {
+        if (!result){
+            res.status(404).send({
+                message: "Post not found"
+            })
+        }
+        res.send({
+            message: "Post was all deleted"
+        })
+    }).catch((err) => {
+        res.status(409).send({
+            message: err.message || "Some error while delete posts."
+        })
+    })
+}

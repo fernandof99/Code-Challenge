@@ -9,5 +9,6 @@ module.exports = (app) => {
     router.get('/:id', posts.findOne)
     router.post('/insertbulk', posts.insertBulk)
     router.put('/', posts.updateBulk)
+    router.delete('/', posts.deleteBulk)
     app.use('/api/posts', router)
 }
